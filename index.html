@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Thai Bank Monitor — Deposit Safety & Health Dashboard tracking NPL, capital adequacy, and deposit insurance for major Thai commercial banks.">
+  <title>Thai Bank Monitor — Deposit Safety &amp; Health Dashboard</title>
+
+  <!-- Fonts: Inter (body) + Barlow Condensed (display) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========================
+       HEADER
+       ======================== -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <!-- Logo + title -->
+      <div class="header-brand">
+        <div class="header-logo" aria-hidden="true">
+          <!-- Monotone SVG: Bank building with shield -->
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="6" y="17" width="3" height="10" fill="currentColor" opacity="0.85"/>
+            <rect x="11" y="17" width="3" height="10" fill="currentColor" opacity="0.85"/>
+            <rect x="16" y="17" width="3" height="10" fill="currentColor" opacity="0.85"/>
+            <rect x="21" y="17" width="3" height="10" fill="currentColor" opacity="0.85"/>
+            <rect x="26" y="17" width="3" height="10" fill="currentColor" opacity="0.85"/>
+            <rect x="5" y="28" width="26" height="2.5" rx="0.5" fill="currentColor"/>
+            <polygon points="18,5 5,13 31,13" fill="currentColor" opacity="0.9"/>
+            <rect x="5" y="13" width="26" height="2.5" fill="currentColor" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="header-titles">
+          <span class="header-title">Thai Bank Monitor</span>
+          <span class="header-subtitle">Deposit Safety &amp; Health Dashboard</span>
+        </div>
+      </div>
+
+      <!-- Meta + toggle -->
+      <div class="header-meta">
+        <span class="header-updated">Updated Mar 2, 2026</span>
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode">
+          <!-- Moon icon (shown in light mode) -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================
+       MAIN
+       ======================== -->
+  <main class="main-content" role="main">
+    <div class="page-wrapper">
+
+      <!-- ========================
+           KPI OVERVIEW
+           ======================== -->
+      <section class="kpi-section" aria-labelledby="kpi-heading">
+        <div class="section-header">
+          <h2 class="section-title" id="kpi-heading">System Overview</h2>
+          <span class="section-desc">Q4 2025 / Latest available</span>
+        </div>
+        <div class="kpi-grid" role="list">
+
+          <div class="kpi-card" role="listitem">
+            <div class="kpi-label">Banks Monitored</div>
+            <div class="kpi-value num">9</div>
+            <div class="kpi-note">Major Thai commercial banks</div>
+          </div>
+
+          <div class="kpi-card" role="listitem">
+            <div class="kpi-label">System NPL Ratio</div>
+            <div class="kpi-value num">2.84%</div>
+            <div class="kpi-note">Q4 2025 · Bank of Thailand</div>
+          </div>
+
+          <div class="kpi-card" role="listitem">
+            <div class="kpi-label">BOT Policy Rate</div>
+            <div class="kpi-value num">1.50%</div>
+            <div class="kpi-note">Further cuts expected</div>
+          </div>
+
+          <div class="kpi-card" role="listitem">
+            <div class="kpi-label">DPA Deposit Cover</div>
+            <div class="kpi-value num">฿1M</div>
+            <div class="kpi-note">Per depositor per bank · Avg deposit rate ~1.63%</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================
+           BANK HEALTH TABLE
+           ======================== -->
+      <section class="bank-table-section" aria-labelledby="table-heading">
+        <div class="section-header">
+          <h2 class="section-title" id="table-heading">Bank Health Monitor</h2>
+        </div>
+
+        <!-- Filter buttons -->
+        <div class="table-controls" role="group" aria-label="Filter banks by signal">
+          <div class="filter-btns">
+            <button class="filter-btn active" data-filter="all">All Banks</button>
+            <button class="filter-btn" data-filter="strong">Strong</button>
+            <button class="filter-btn" data-filter="watch">Watch</button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <div class="table-scroll">
+            <table class="bank-table" id="bankTable" aria-label="Thai bank health metrics">
+              <thead>
+                <tr>
+                  <th data-col="name" scope="col">Bank</th>
+                  <th data-col="price" scope="col">Price (฿)</th>
+                  <th data-col="mktcap" scope="col">Mkt Cap (฿B)</th>
+                  <th data-col="pe" scope="col">P/E</th>
+                  <th data-col="div" scope="col">Div Yield</th>
+                  <th data-col="cet1" scope="col">CET1 (%)</th>
+                  <th data-col="car" scope="col">CAR (%)</th>
+                  <th data-col="npl" scope="col">NPL (%)</th>
+                  <th data-col="nplcov" scope="col">NPL Cov. (%)</th>
+                  <th data-col="signal" scope="col">Signal</th>
+                </tr>
+              </thead>
+              <tbody id="bankTableBody">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+          <div class="table-note">
+            Click any row to expand credit rating &amp; deposit rate details. Click column headers to sort.
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================
+           DEPOSIT RATES + INSURANCE
+           ======================== -->
+      <section aria-label="Deposit rates and insurance">
+        <div class="two-col">
+
+          <!-- Deposit Rate Comparison -->
+          <div class="card" aria-labelledby="dep-rate-heading">
+            <h3 class="card-title" id="dep-rate-heading">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              Deposit Rates
+            </h3>
+            <div style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
+              <table class="deposit-table" aria-label="Deposit rates comparison">
+                <thead>
+                  <tr>
+                    <th scope="col">Bank</th>
+                    <th scope="col">Savings</th>
+                    <th scope="col">3M FD</th>
+                    <th scope="col">6M FD</th>
+                    <th scope="col">12M FD</th>
+                  </tr>
+                </thead>
+                <tbody id="depositTableBody">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+            <p style="font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-3);max-width:none;">Rates indicative only — verify with individual banks before transacting.</p>
+          </div>
+
+          <!-- Deposit Insurance Calculator -->
+          <div class="card" aria-labelledby="dpa-heading">
+            <h3 class="card-title" id="dpa-heading">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Deposit Insurance (DPA)
+            </h3>
+
+            <div class="dpa-coverage">
+              <span class="dpa-amount">฿1,000,000</span>
+              <span class="dpa-sublabel">per depositor · per bank</span>
+            </div>
+
+            <p class="dpa-meta">
+              <strong>Effective:</strong> August 11, 2021 &mdash; Applies to deposits at commercial banks, specialized financial institutions, and finance companies licensed by the Bank of Thailand.
+            </p>
+
+            <!-- Calculator -->
+            <label class="calc-label" for="calcInput">Deposit Insurance Calculator</label>
+            <div class="calc-row">
+              <div class="calc-input-wrap">
+                <span class="calc-prefix">฿</span>
+                <input
+                  class="calc-input"
+                  id="calcInput"
+                  type="text"
+                  inputmode="numeric"
+                  placeholder="Enter total deposit amount"
+                  aria-label="Total deposit amount in Thai Baht"
+                  autocomplete="off"
+                >
+              </div>
+            </div>
+            <div class="calc-result" id="calcResult" aria-live="polite">
+              Enter an amount above to see how many banks you need.
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================
+           CAPITAL ADEQUACY CHART
+           ======================== -->
+      <section class="chart-section" aria-labelledby="chart-heading">
+        <div class="section-header">
+          <h2 class="section-title" id="chart-heading">Capital Adequacy — CET1 Ratios</h2>
+          <span class="section-desc">Q4 2025 Pillar 3 Disclosures</span>
+        </div>
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <p style="font-size:var(--text-xs);color:var(--color-text-muted);max-width:none;line-height:1.5;">
+                Common Equity Tier 1 (CET1) measures core capital strength. BOT minimum requirement: 8.00%. With conservation buffer: 10.50%.
+              </p>
+            </div>
+            <div class="chart-legend" aria-hidden="true">
+              <div class="legend-item">
+                <div class="legend-line min"></div>
+                <span>BOT Min 8%</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-line buf"></div>
+                <span>With Buffer 10.5%</span>
+              </div>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="cet1Chart" aria-label="CET1 capital ratio bar chart for 9 Thai banks"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================
+           KEY RISKS
+           ======================== -->
+      <section class="risks-section" aria-labelledby="risks-heading">
+        <div class="section-header">
+          <h2 class="section-title" id="risks-heading">Key Sector Risks</h2>
+          <span class="section-desc">Current threats to the banking system</span>
+        </div>
+        <div class="card">
+          <ul class="risk-list" role="list">
+
+            <li class="risk-item">
+              <span class="risk-num" aria-hidden="true">01</span>
+              <div class="risk-content">
+                <div class="risk-title">Moody's Negative Outlook — 7 Thai Banks</div>
+                <p class="risk-body">Moody's revised outlook to NEGATIVE for 7 major Thai banks in April 2025, tied to sovereign fiscal concerns and household debt levels.</p>
+              </div>
+              <span class="risk-tag negative">Negative</span>
+            </li>
+
+            <li class="risk-item">
+              <span class="risk-num" aria-hidden="true">02</span>
+              <div class="risk-content">
+                <div class="risk-title">NPL Cliff Risk — Potential Rise to 3.73%+ in 2026</div>
+                <p class="risk-body">FSSIA estimates system NPL could reach 3.73%+ if Stage 2 (Special Mention) loans deteriorate. Elevated restructured portfolios remain vulnerable.</p>
+              </div>
+              <span class="risk-tag watch">Elevated</span>
+            </li>
+
+            <li class="risk-item">
+              <span class="risk-num" aria-hidden="true">03</span>
+              <div class="risk-content">
+                <div class="risk-title">Rate Cut Cycle Compresses NIM</div>
+                <p class="risk-body">BOT cut policy rate to 1.50%; further cuts expected. Rate compression narrows net interest margins and reduces deposit yields across the sector.</p>
+              </div>
+              <span class="risk-tag watch">Watch</span>
+            </li>
+
+            <li class="risk-item">
+              <span class="risk-num" aria-hidden="true">04</span>
+              <div class="risk-content">
+                <div class="risk-title">Household Debt-to-GDP ~91% — Structural Drag</div>
+                <p class="risk-body">Elevated household leverage remains a structural risk to consumer credit quality. Limits consumption recovery and increases default sensitivity to rate changes.</p>
+              </div>
+              <span class="risk-tag negative">Structural</span>
+            </li>
+
+            <li class="risk-item">
+              <span class="risk-num" aria-hidden="true">05</span>
+              <div class="risk-content">
+                <div class="risk-title">Fitch Downgrades 2025 Sector Outlook to "Deteriorating"</div>
+                <p class="risk-body">Fitch revised its 2025 Thai banking sector outlook from "Neutral" to "Deteriorating", citing asset quality pressures, thin margins, and weak credit demand.</p>
+              </div>
+              <span class="risk-tag negative">Negative</span>
+            </li>
+
+          </ul>
+        </div>
+      </section>
+
+    </div><!-- /page-wrapper -->
+  </main>
+
+  <!-- ========================
+       FOOTER
+       ======================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-title">Methodology &amp; Data Notes</p>
+        <ul class="footer-notes">
+          <li>Data as of March 2, 2026 (latest available at time of publication)</li>
+          <li>CET1 and CAR from latest Pillar 3 disclosures (Q2/Q4 2025 reporting). UOB (Thai) capital ratios from Thai subsidiary Pillar 3 (Nov 2024 / Jun 2025); NPL from UOB Group consolidated.</li>
+          <li>NPL ratios from Q4 2025 earnings results; deposit rates are indicative</li>
+          <li>DPA coverage ฿1M per depositor per institution — effective August 11, 2021</li>
+          <li>Signal logic: Strong = CET1 &gt;16% + NPL &lt;3% + Coverage &gt;200%; Watch = otherwise above minimum; Alert = CET1 &lt;14% or NPL &gt;5%</li>
+        </ul>
+      </div>
+      <div class="footer-sources">
+        <p class="footer-title">Sources</p>
+        <p style="font-size:var(--text-xs);color:var(--color-text-faint);line-height:1.8;max-width:none;text-align:inherit;">
+          Bank of Thailand (BOT)<br>
+          SET filings &amp; Pillar 3 Reports<br>
+          Fitch Ratings<br>
+          Moody's Investors Service<br>
+          S&amp;P Global Ratings<br>
+          FSSIA Research
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

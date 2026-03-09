@@ -1,0 +1,941 @@
+/* ============================================
+   STYLE.CSS — Component Styles
+   Thai Bank Monitor
+   ============================================ */
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+.page-wrapper {
+  max-width: var(--content-wide);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+.header-inner {
+  max-width: var(--content-wide);
+  margin: 0 auto;
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: inherit;
+  flex: 1;
+}
+
+.header-logo {
+  flex-shrink: 0;
+  color: var(--color-text);
+}
+
+.header-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.header-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.header-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.header-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+.header-updated {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  transition: background-color var(--transition), color var(--transition);
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-surface-dynamic);
+  color: var(--color-text);
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+.main-content {
+  padding: var(--space-8) 0 var(--space-16);
+}
+
+/* ============================================
+   SECTION HEADERS
+   ============================================ */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+}
+
+.section-desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* ============================================
+   KPI OVERVIEW STRIP
+   ============================================ */
+.kpi-section {
+  margin-bottom: var(--space-10);
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+}
+
+@media (max-width: 900px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .kpi-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
+}
+
+.kpi-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+.kpi-label {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  margin-bottom: var(--space-2);
+}
+
+.kpi-value {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.kpi-note {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  margin-top: var(--space-1);
+  line-height: 1.4;
+}
+
+/* ============================================
+   BANK HEALTH TABLE
+   ============================================ */
+.bank-table-section {
+  margin-bottom: var(--space-10);
+}
+
+.table-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.filter-btns {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.filter-btn {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.filter-btn:hover {
+  background: var(--color-surface-dynamic);
+  color: var(--color-text);
+}
+
+.filter-btn.active {
+  background: var(--color-text);
+  color: var(--color-bg);
+  border-color: var(--color-text);
+}
+
+.table-wrap {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+.bank-table {
+  width: 100%;
+  min-width: 960px;
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.bank-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--color-surface-offset);
+}
+
+.bank-table th {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: color var(--transition);
+}
+
+.bank-table th:hover {
+  color: var(--color-text);
+}
+
+.bank-table th.sort-asc::after  { content: ' ↑'; opacity: 0.7; }
+.bank-table th.sort-desc::after { content: ' ↓'; opacity: 0.7; }
+
+.bank-table td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-divider);
+  color: var(--color-text);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.bank-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.bank-table tbody tr {
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.bank-table tbody tr:hover {
+  background: var(--color-surface-offset);
+}
+
+.bank-table tbody tr.expanded {
+  background: var(--color-surface-offset);
+}
+
+.bank-name-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bank-name {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.bank-ticker {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Signal badges */
+.signal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 3px var(--space-2);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.signal-badge::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.signal-strong {
+  color: var(--color-strong);
+  background: var(--color-strong-bg);
+}
+.signal-strong::before { background: var(--color-strong-dot); }
+
+.signal-watch {
+  color: var(--color-watch);
+  background: var(--color-watch-bg);
+}
+.signal-watch::before { background: var(--color-watch-dot); }
+
+.signal-alert {
+  color: var(--color-alert);
+  background: var(--color-alert-bg);
+}
+.signal-alert::before { background: var(--color-alert-dot); }
+
+/* Expand row */
+.expand-row {
+  display: none;
+  background: var(--color-surface-2);
+}
+
+.expand-row.visible {
+  display: table-row;
+}
+
+.expand-cell {
+  padding: var(--space-4) var(--space-5) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.expand-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+@media (max-width: 700px) {
+  .expand-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+.expand-block-title {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.rating-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.rating-list li {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.rating-agency {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  min-width: 48px;
+  font-weight: 500;
+}
+
+.mini-deposit-table {
+  font-size: var(--text-xs);
+  font-variant-numeric: tabular-nums;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mini-deposit-table th {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  padding: var(--space-1) var(--space-2) var(--space-1) 0;
+  text-align: right;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.mini-deposit-table th:first-child { text-align: left; }
+
+.mini-deposit-table td {
+  padding: var(--space-1) var(--space-2) var(--space-1) 0;
+  text-align: right;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.mini-deposit-table td:first-child { text-align: left; }
+.mini-deposit-table tbody tr:last-child td { border-bottom: none; }
+
+/* ============================================
+   TWO-COL SECTION LAYOUT
+   ============================================ */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-10);
+}
+
+@media (max-width: 768px) {
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+/* ============================================
+   CARDS (generic)
+   ============================================ */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-6);
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* ============================================
+   DEPOSIT RATE TABLE CARD
+   ============================================ */
+.deposit-table {
+  font-size: var(--text-xs);
+  font-variant-numeric: tabular-nums lining-nums;
+  width: 100%;
+}
+
+.deposit-table th {
+  padding: var(--space-2) var(--space-3) var(--space-2) 0;
+  text-align: right;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.deposit-table th:first-child { text-align: left; padding-left: 0; }
+
+.deposit-table td {
+  padding: var(--space-2) var(--space-3) var(--space-2) 0;
+  text-align: right;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-divider);
+  font-size: var(--text-xs);
+}
+
+.deposit-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+  padding-left: 0;
+  color: var(--color-text);
+}
+
+.deposit-table tbody tr:last-child td { border-bottom: none; }
+
+.deposit-table td.rate-high {
+  color: var(--color-strong);
+  font-weight: 600;
+}
+
+/* ============================================
+   DEPOSIT INSURANCE CARD
+   ============================================ */
+.dpa-coverage {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.dpa-amount {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.dpa-sublabel {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.dpa-meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-5);
+}
+
+.dpa-meta strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* Insurance calculator */
+.calc-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+  display: block;
+}
+
+.calc-row {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.calc-input-wrap {
+  position: relative;
+  flex: 1;
+}
+
+.calc-prefix {
+  position: absolute;
+  left: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.calc-input {
+  width: 100%;
+  padding: var(--space-2) var(--space-3) var(--space-2) var(--space-6);
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+  transition: border-color var(--transition), background-color var(--transition);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.calc-input:focus {
+  outline: none;
+  border-color: var(--color-text-muted);
+  background: var(--color-surface-2);
+}
+
+.calc-result {
+  margin-top: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface-offset);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  min-height: 40px;
+  transition: background-color var(--transition);
+}
+
+.calc-result strong {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.calc-result .banks-needed {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* ============================================
+   CAPITAL ADEQUACY CHART
+   ============================================ */
+.chart-section {
+  margin-bottom: var(--space-10);
+}
+
+.chart-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-6);
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+.chart-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.chart-legend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.legend-line {
+  width: 16px;
+  height: 2px;
+  flex-shrink: 0;
+}
+
+.legend-line.min { background: var(--color-text-faint); }
+.legend-line.buf { background: var(--color-text-muted); border-top: 2px dashed var(--color-text-muted); height: 0; }
+
+.chart-container {
+  position: relative;
+  height: 360px;
+}
+
+@media (max-width: 600px) {
+  .chart-container { height: 300px; }
+}
+
+/* ============================================
+   RISKS CARD
+   ============================================ */
+.risks-section {
+  margin-bottom: var(--space-10);
+}
+
+.risk-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.risk-item {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-divider);
+  align-items: flex-start;
+}
+
+.risk-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.risk-num {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text-faint);
+  line-height: 1;
+  min-width: 28px;
+  flex-shrink: 0;
+  padding-top: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+.risk-content {
+  flex: 1;
+}
+
+.risk-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 2px;
+  line-height: 1.4;
+}
+
+.risk-body {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  max-width: none;
+}
+
+.risk-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.risk-tag.negative {
+  background: var(--color-alert-bg);
+  color: var(--color-alert);
+}
+
+.risk-tag.watch {
+  background: var(--color-watch-bg);
+  color: var(--color-watch);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-8) var(--space-4);
+  transition: border-color var(--transition);
+}
+
+.footer-inner {
+  max-width: var(--content-wide);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+@media (max-width: 600px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.footer-title {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.footer-notes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.footer-notes li {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  line-height: 1.5;
+  max-width: none;
+}
+
+.footer-sources {
+  text-align: right;
+}
+
+@media (max-width: 600px) {
+  .footer-sources { text-align: left; }
+}
+
+.footer-sources p {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  max-width: none;
+}
+
+/* ============================================
+   SECTION DIVIDER
+   ============================================ */
+.section-divider {
+  height: 1px;
+  background: var(--color-divider);
+  margin: var(--space-8) 0;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 480px) {
+  .header-inner {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .header-title {
+    font-size: var(--text-lg);
+  }
+
+  .header-subtitle {
+    display: none;
+  }
+
+  .card {
+    padding: var(--space-4);
+  }
+
+  .chart-card {
+    padding: var(--space-4);
+  }
+
+  .kpi-value {
+    font-size: var(--text-lg);
+  }
+
+  .section-title {
+    font-size: var(--text-base);
+  }
+}
+
+/* ============================================
+   NUMBER FORMATTING HELPERS
+   ============================================ */
+.num {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.num-mono {
+  font-family: var(--font-body);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* Subtle row highlight for sorted column */
+.bank-table td.sorted-col {
+  background: var(--color-surface-offset);
+}
+
+/* Tooltip-like note */
+.note-inline {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-left: var(--space-2);
+}
+
+/* Table cap note */
+.table-note {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  padding: var(--space-2) var(--space-4);
+  border-top: 1px solid var(--color-divider);
+  background: var(--color-surface-offset);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
