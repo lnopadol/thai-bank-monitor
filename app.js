@@ -17,12 +17,12 @@
       id: 'bbl',
       name: 'Bangkok Bank',
       ticker: 'BBL',
-      price: 177.50,
-      mktcap: 339,
-      pe: 6.96,
-      div: 4.8,
-      cet1: 17.21,
-      car: 21.78,
+      price: 166.50,
+      mktcap: 318,
+      pe: 6.91,
+      div: 5.0,
+      cet1: 17.20,
+      car: 21.80,
       npl: 3.0,
       nplcov: 324,
       ratings: {
@@ -32,20 +32,20 @@
       },
       signal: 'strong',
       signalLabel: 'Strong',
-      deposits: { savings: 0.25, fd3: 1.00, fd6: 1.15, fd12: 1.35 }
+      deposits: { savings: 0.25, fd3: 0.85, fd6: 0.90, fd12: 1.25 }
     },
     {
       id: 'kbank',
       name: 'Kasikornbank',
       ticker: 'KBANK',
-      price: 201.00,
-      mktcap: 476,
-      pe: 9.85,
-      div: 6.2,
-      cet1: 18.0,
-      car: 19.91,
-      npl: 3.2,
-      nplcov: 147,
+      price: 191.00,
+      mktcap: 453,
+      pe: 9.26,
+      div: 7.0,
+      cet1: 18.00,
+      car: 20.35,
+      npl: 3.20,
+      nplcov: 163,
       ratings: {
         fitch: 'BBB',
         moodys: 'Baa1 (Neg)',
@@ -53,20 +53,20 @@
       },
       signal: 'watch',
       signalLabel: 'Watch',
-      deposits: { savings: 0.25, fd3: 0.90, fd6: 1.10, fd12: 1.30 }
+      deposits: { savings: 0.25, fd3: 0.60, fd6: 0.70, fd12: 0.80 }
     },
     {
       id: 'scb',
       name: 'SCB X',
       ticker: 'SCB',
-      price: 148.50,
-      mktcap: 500,
-      pe: 10.19,
+      price: 144.00,
+      mktcap: 485,
+      pe: 10.22,
       div: 7.0,
-      cet1: 15.7,
-      car: 19.1,
-      npl: 3.5,
-      nplcov: 180,
+      cet1: 17.80,
+      car: 18.90,
+      npl: 3.29,
+      nplcov: 161,
       ratings: {
         fitch: 'BBB',
         moodys: 'Baa1 (Neg)',
@@ -74,19 +74,19 @@
       },
       signal: 'watch',
       signalLabel: 'Watch',
-      deposits: { savings: 0.25, fd3: 0.85, fd6: 1.05, fd12: 1.25 }
+      deposits: { savings: 0.25, fd3: 0.85, fd6: 0.90, fd12: 1.20 }
     },
     {
       id: 'ktb',
       name: 'Krung Thai Bank',
       ticker: 'KTB',
-      price: 34.25,
-      mktcap: 479,
-      pe: 10.38,
-      div: 5.8,
-      cet1: 17.4,
-      car: 21.4,
-      npl: 2.9,
+      price: 35.00,
+      mktcap: 489,
+      pe: 10.14,
+      div: 6.0,
+      cet1: 19.00,
+      car: 21.00,
+      npl: 2.90,
       nplcov: 204,
       ratings: {
         fitch: 'BBB+',
@@ -95,18 +95,18 @@
       },
       signal: 'strong',
       signalLabel: 'Strong',
-      deposits: { savings: 0.25, fd3: 1.00, fd6: 1.15, fd12: 1.35 }
+      deposits: { savings: 0.25, fd3: 0.85, fd6: 0.90, fd12: 1.20 }
     },
     {
       id: 'ttb',
       name: 'TMBThanachart',
       ticker: 'TTB',
-      price: 2.32,
-      mktcap: 220,
-      pe: 10.55,
-      div: 5.6,
-      cet1: 17.5,
-      car: 20.4,
+      price: 2.30,
+      mktcap: 218,
+      pe: 10.45,
+      div: 6.0,
+      cet1: 17.50,
+      car: 19.50,
       npl: 2.87,
       nplcov: 152,
       ratings: {
@@ -116,70 +116,70 @@
       },
       signal: 'watch',
       signalLabel: 'Watch',
-      deposits: { savings: 0.30, fd3: 1.00, fd6: 1.20, fd12: 1.40 }
+      deposits: { savings: 0.125, fd3: 0.95, fd6: 1.10, fd12: 1.30 }
     },
     {
       id: 'bay',
       name: 'Bank of Ayudhya',
       ticker: 'BAY',
-      price: 26.75,
-      mktcap: 197,
-      pe: 6.35,
-      div: 3.2,
+      price: 25.50,
+      mktcap: 188,
+      pe: 5.92,
+      div: 3.0,
       cet1: 16.41,
       car: 20.69,
-      npl: 2.5,
-      nplcov: 250,
+      npl: 3.26,
+      nplcov: 127,
       ratings: {
         fitch: 'BBB+',
         moodys: 'Baa1 (Neg)',
         sp: '—'
       },
-      signal: 'strong',
-      signalLabel: 'Strong',
-      deposits: { savings: 0.25, fd3: 0.90, fd6: 1.10, fd12: 1.30 }
+      signal: 'watch',
+      signalLabel: 'Watch',
+      deposits: { savings: 0.25, fd3: 0.85, fd6: 0.90, fd12: 1.30 }
     },
     {
       id: 'kkp',
       name: 'Kiatnakin Phatra',
       ticker: 'KKP',
       price: 75.75,
-      mktcap: 61,
+      mktcap: 63,
       pe: 10.56,
-      div: 5.5,
-      cet1: 16.8,
-      car: 19.5,
-      npl: 3.8,
-      nplcov: 140,
+      div: 6.0,
+      cet1: 13.70,
+      car: 19.00,
+      npl: 4.30,
+      nplcov: 137,
       ratings: {
         fitch: 'BB+ (Intl) / AA-(tha)',
         moodys: '—',
         sp: '—'
       },
-      signal: 'watch',
-      signalLabel: 'Watch',
-      deposits: { savings: 0.50, fd3: 1.50, fd6: 1.70, fd12: 1.90 }
+      signal: 'alert',
+      signalLabel: 'Alert',
+      deposits: { savings: 0.25, fd3: 1.05, fd6: 1.35, fd12: 1.40 }
     },
     {
       id: 'tisco',
       name: 'TISCO Financial',
       ticker: 'TISCO',
-      price: 114.50,
-      mktcap: 92,
-      pe: 13.63,
-      div: 6.8,
-      cet1: 22.5,
-      car: 24.5,
-      npl: 2.3,
-      nplcov: 220,
+      price: 113.00,
+      mktcap: 90,
+      pe: 13.57,
+      div: 7.0,
+      cet1: 16.20,
+      car: 20.90,
+      npl: 2.30,
+      nplcov: 171,
       ratings: {
         fitch: 'AA(tha)',
         moodys: '—',
         sp: '—'
       },
-      signal: 'strong',
-      signalLabel: 'Strong',
-      deposits: { savings: 0.30, fd3: 1.10, fd6: 1.30, fd12: 1.50 }
+      signal: 'watch',
+      signalLabel: 'Watch',
+      deposits: { savings: 0.25, fd3: 1.35, fd6: 1.40, fd12: 1.45 }
     },
     {
       id: 'uob',
@@ -202,7 +202,7 @@
       signalLabel: 'Watch',
       unlisted: true,
       parentNote: 'Subsidiary of UOB Group (SGX: U11). Not listed on SET.',
-      deposits: { savings: 0.25, fd3: 0.70, fd6: 1.30, fd12: 0.90 }
+      deposits: { savings: 0.25, fd3: 0.85, fd6: 0.90, fd12: 1.20 }
     }
   ];
 
@@ -667,7 +667,7 @@
         scales: {
           x: {
             min: 0,
-            max: 28,
+            max: 24,
             grid: {
               color: c.gridLine,
               drawBorder: false
